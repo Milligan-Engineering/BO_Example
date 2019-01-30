@@ -9,7 +9,7 @@ int main()
 	int numberOfPlayers;
 	int turnTimeMinutes;
 	int turnTimeSeconds;
-	int turnTime;
+	double turnTime;
 	int value;
 
 	cout << "Welcome to the B&O Banker Assitant \n";
@@ -23,7 +23,7 @@ int main()
 	cout << "Enter the desired seconds of turn time: ";
 	cin >> turnTimeSeconds;
 
-	turnTime = turnTimeMinutes + turnTimeSeconds/60;
+	turnTime = turnTimeMinutes + turnTimeSeconds/60.;
 
 	cout << "There will be " << numberOfPlayers << " playing with a turn time of " 
 		<< turnTimeMinutes << " minutes and " << turnTimeSeconds << " seconds. \n";
