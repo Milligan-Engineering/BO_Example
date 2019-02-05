@@ -7,7 +7,7 @@
 
 #include <iostream>
 using namespace std;
-//Comment
+//The Original Comment
 int main()
 {
 	int numberOfPlayers;
@@ -52,6 +52,6 @@ int main()
 		<< turnTimeMinutes << " minutes and " << turnTimeSeconds << " seconds. \n";
 	cout << "Enter character to continue \n";
 	cin >> value;
-
+	// This is a different comment
 	return(0);
 }
