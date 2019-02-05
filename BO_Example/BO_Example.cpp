@@ -7,7 +7,7 @@
 
 #include <iostream>
 using namespace std;
-
+//Comment
 int main()
 {
 	int numberOfPlayers;
@@ -18,14 +18,15 @@ int main()
 	const int MINPLAYERS = 2;
 	const int MAXPLAYERS = 6;
 	
-	cout << "Welcome to the B&O Banker Assitant \n";
+	cout << "Welcome to the B&O Banker Assistant \n";
 
 	// Retrieve and validate number of players using do while
-	do 
+	do
 	{
 		cout << "How many players will be playing? Must be between "<< MINPLAYERS << " and " << MAXPLAYERS << " players." ;
 		cin >> numberOfPlayers;
-	} while ((numberOfPlayers < MINPLAYERS) || (numberOfPlayers > MAXPLAYERS));
+	} 
+	while ((numberOfPlayers < MINPLAYERS) || (numberOfPlayers > MAXPLAYERS));
 	cout << "There will be " << numberOfPlayers << " players.\n"; // Echo number of players
 	
 	/* Validating the number of players using a while satement requires more
