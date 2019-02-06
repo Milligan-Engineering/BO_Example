@@ -53,6 +53,6 @@ int main()
 		<< turnTimeMinutes << " minutes and " << turnTimeSeconds << " seconds. \n";
 	cout << "Enter character to continue \n";
 	cin >> value;
-	// Another Comment
+	// A Better Comment
 	return(0);
 }
