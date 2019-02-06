@@ -8,7 +8,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-//The Original Comment
+//A Different Comment
+
 int main()
 {
 	int numberOfPlayers;
@@ -49,7 +50,6 @@ int main()
 
 	cout << "Enter character to continue \n";
 	cin >> value;
-
-	// Additional comment
+	// A Better Comment
 	return(0);
 }
