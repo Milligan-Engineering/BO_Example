@@ -16,7 +16,7 @@ int main()
 	int playerNumber;
 	const int MINPLAYERS = 2;
 	const int MAXPLAYERS = 6;
-	string playerName[6];
+	string playerName[MAXPLAYERS];
 
 	cout << "Welcome to the B&O Banker Assistant \n";
 
