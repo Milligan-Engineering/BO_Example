@@ -35,7 +35,7 @@ int main()
 	while (playerNumber <= numberOfPlayers)
 	{
 		cout << "Enter name of Player " << playerNumber << ": ";
-		cin >> playerName[playerNumber];
+		cin >> playerName[playerNumber-1];
 		playerNumber++;
 	}
 
@@ -43,7 +43,7 @@ int main()
 	playerNumber = 1;
 	while (playerNumber <= numberOfPlayers)
 	{
-		cout <<  playerNumber << ": " << playerName[playerNumber] << endl;
+		cout <<  playerNumber << ": " << playerName[playerNumber-1] << endl;
 		playerNumber++;
 	}
 
