@@ -3,90 +3,65 @@
 //Email Address: jjgiesey@milligan.edu
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game
+// Modified to contain multiple loop problems
 //Last Changed: 02/04/2019
 
 #include <iostream>
 #include <string>
 using namespace std;
-//A Different Comment
+
 
 int main()
 {
 	int numberOfPlayers;
 	int value;
-	int playerNumber;
 	const int MINPLAYERS = 2;
 	const int MAXPLAYERS = 6;
 	string playerName[MAXPLAYERS];
-	double timePerTurn;
-	double timePerPlayer;
-	double costPerMinute;
+	string temp;
 
 	cout << "Welcome to the B&O Banker Assistant \n";
 
-	// Menu for timer
-	cout << "Would you like to use a timer for the game? Y/N \n";
-	char option;
-	cin >> option;
-	if ((option == 'Y') || (option == 'y'))
-	{
-		cout << "Which type of timer would you like to use? \n";
-		cout << "S: Shot Clock\n";
-		cout << "C: Cumluative Timer\n";
-		cout << "M: Cost Timer\n";
-		char option2;
-		cin >> option2;
-		switch (option2)
-		{
-		case 'S':
-			//Set up shot clock
-			cout << "Enter time per turn in minutes: ";
-			cin >> timePerTurn;
-			break;
-		case 'C':
-			//Set up cumulative timer
-			cout << "Enter time per player in minutes: ";
-			cin >> timePerPlayer;
-			break;
-		case 'M':
-			//Set up cost timer
-			cout << "Enter cost per minute: ";
-			cin >> costPerMinute;
-			break;
-		default:
-			cout << "Invalid entry. Timer not used.\n";
-			break;
-		}
-	}
-
-
-	// Retrieve and validate number of players using while
-
+	// Retrieve and validate number of players
 	cout << "How many players will be playing?";
 	cin >> numberOfPlayers;
-	while ((numberOfPlayers < MINPLAYERS) || (numberOfPlayers > MAXPLAYERS))
+	while (numberOfPlayers < MINPLAYERS || numberOfPlayers > MAXPLAYERS) // Check to see if numberOfPlayer is in range
 	{
 		cout << "Number of players must be between " << MINPLAYERS << " and " << MAXPLAYERS << ". Please enter number again.";
 		cin >> numberOfPlayers;
 	}
 	cout << "There will be " << numberOfPlayers << " players.\n";// Echo number of players
+	// Read player names
 
-	playerNumber = 1;
-	while (playerNumber <= numberOfPlayers)
+	for (int i = 0; i > numberOfPlayers; i++)
+		cout << "Enter name of Player " << i << ": ";
+		cin >> playerName[i-1];
+
+	//Sort names alphabetically (poorly)
+	
+	for (int i = 0; i <= numberOfPlayers; i++)
 	{
-		cout << "Enter name of Player " << playerNumber << ": ";
-		cin >> playerName[playerNumber-1];
-		playerNumber++;
+		for (int j = 0; j <= numberOfPlayers - i; j++)
+		{
+			if (playerName[j] > playerName[j + 1])
+			{
+				temp = playerName[j];
+				playerName[j] = playerName[j + 1];
+				playerName[j + 1] = temp;
+			}
+		}
+
 	}
 
-	cout << "There will be " << numberOfPlayers << " playing. \n";
-	playerNumber = 1;
-	while (playerNumber <= numberOfPlayers)
+	// Write player names in order
+	for (int i = 1; i <= numberOfPlayers; i++)
 	{
-		cout <<  playerNumber << ": " << playerName[playerNumber-1] << endl;
-		playerNumber++;
+		cout << i << ": " << playerName[i] << endl;
+
 	}
 
+
+	
 	cout << "Enter character to continue \n";
 	cin >> value;
 	// A Better Comment
