@@ -3,8 +3,8 @@
 //Email Address: jjgiesey@milligan.edu
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game
-// Modified to contain multiple loop problems
-//Last Changed: 02/04/2019
+// Modified to contain multiple loop problems - fix
+//Last Changed: 02/12/2019
 
 #include <iostream>
 #include <string>
