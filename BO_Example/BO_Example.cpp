@@ -4,7 +4,7 @@
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game
 // Modified to contain multiple loop problems
-//Last Changed: 02/04/2019
+//Last Changed: 02/12/2019
 
 #include <iostream>
 #include <string>
@@ -25,7 +25,7 @@ int main()
 	// Retrieve and validate number of players
 	cout << "How many players will be playing?";
 	cin >> numberOfPlayers;
-	while (numberOfPlayers < MINPLAYERS || numberOfPlayers > MAXPLAYERS) // Check to see if numberOfPlayer is in range
+	while (numberOfPlayers > MINPLAYERS || numberOfPlayers < MAXPLAYERS) // Check to see if numberOfPlayer is in range
 	{
 		cout << "Number of players must be between " << MINPLAYERS << " and " << MAXPLAYERS << ". Please enter number again.";
 		cin >> numberOfPlayers;
@@ -43,11 +43,11 @@ int main()
 	{
 		for (int j = 0; j <= numberOfPlayers - i; j++)
 		{
-			if (playerName[j] > playerName[j + 1])
+			if (playerName[j] > playerName[j - 1])
 			{
 				temp = playerName[j];
-				playerName[j] = playerName[j + 1];
-				playerName[j + 1] = temp;
+				playerName[j] = playerName[j - 1];
+				playerName[j - 1] = temp;
 			}
 		}
 
