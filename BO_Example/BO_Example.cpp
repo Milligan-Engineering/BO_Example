@@ -25,7 +25,7 @@ int main()
 	// Retrieve and validate number of players
 	cout << "How many players will be playing?";
 	cin >> numberOfPlayers;
-	while (numberOfPlayers < MINPLAYERS || numberOfPlayers > MAXPLAYERS) // Check to see if numberOfPlayer is in range
+	while ((numberOfPlayers < MINPLAYERS) || (numberOfPlayers > MAXPLAYERS)) // Check to see if numberOfPlayer is in range
 	{
 		cout << "Number of players must be between " << MINPLAYERS << " and " << MAXPLAYERS << ". Please enter number again.";
 		cin >> numberOfPlayers;
@@ -33,15 +33,17 @@ int main()
 	cout << "There will be " << numberOfPlayers << " players.\n";// Echo number of players
 	// Read player names
 
-	for (int i = 0; i > numberOfPlayers; i++)
-		cout << "Enter name of Player " << i << ": ";
-		cin >> playerName[i-1];
+	for (int i = 0; i < numberOfPlayers; i++)
+	{
+		cout << "Enter name of Player " << i+1 << ": ";
+		cin >> playerName[i];
+	}
 
 	//Sort names alphabetically (poorly)
 	
-	for (int i = 0; i <= numberOfPlayers; i++)
+	for (int i = 0; i < numberOfPlayers-1; i++)
 	{
-		for (int j = 0; j <= numberOfPlayers - i; j++)
+		for (int j = 0; j < numberOfPlayers - i - 1; j++)
 		{
 			if (playerName[j] > playerName[j + 1])
 			{
@@ -56,7 +58,7 @@ int main()
 	// Write player names in order
 	for (int i = 1; i <= numberOfPlayers; i++)
 	{
-		cout << i << ": " << playerName[i] << endl;
+		cout << i << ": " << playerName[i-1] << endl;
 
 	}
 
