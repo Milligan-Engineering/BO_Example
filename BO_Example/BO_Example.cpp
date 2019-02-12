@@ -18,8 +18,47 @@ int main()
 	const int MINPLAYERS = 2;
 	const int MAXPLAYERS = 6;
 	string playerName[MAXPLAYERS];
+	double timePerTurn;
+	double timePerPlayer;
+	double costPerMinute;
 
 	cout << "Welcome to the B&O Banker Assistant \n";
+
+	// Menu for timer
+	cout << "Would you like to use a timer for the game? Y/N \n";
+	char option;
+	cin >> option;
+	if ((option == 'Y') || (option == 'y'))
+	{
+		cout << "Which type of timer would you like to use? \n";
+		cout << "S: Shot Clock\n";
+		cout << "C: Cumluative Timer\n";
+		cout << "M: Cost Timer\n";
+		char option2;
+		cin >> option2;
+		switch (option2)
+		{
+		case 'S':
+			//Set up shot clock
+			cout << "Enter time per turn in minutes: ";
+			cin >> timePerTurn;
+			break;
+		case 'C':
+			//Set up cumulative timer
+			cout << "Enter time per player in minutes: ";
+			cin >> timePerPlayer;
+			break;
+		case 'M':
+			//Set up cost timer
+			cout << "Enter cost per minute: ";
+			cin >> costPerMinute;
+			break;
+		default:
+			cout << "Invalid entry. Timer not used.\n";
+			break;
+		}
+	}
+
 
 	// Retrieve and validate number of players using while
 
