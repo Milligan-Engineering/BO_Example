@@ -34,8 +34,10 @@ int main()
 	// Read player names
 
 	for (int i = 0; i > numberOfPlayers; i++)
+	{
 		cout << "Enter name of Player " << i << ": ";
-		cin >> playerName[i-1];
+		cin >> playerName[i - 1];
+	}
 
 	//Sort names alphabetically (poorly)
 	
