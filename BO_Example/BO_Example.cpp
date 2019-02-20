@@ -12,6 +12,15 @@
 
 using namespace std;
 
+int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue);
+//Precondition: arrayValues is an empty array of size arraySize. maxValue contains the upper limit of values
+//Postcondition: arrayValues will contain random values between 0 and maxValue. Returns size of array.
+
+int Sorter(double Values[], int Order[], int Size);
+//Preconditions: An array with maginitudes stored in Values and the order is stored in Order (0 first, 1 second, ...)
+//				The size of the arrays are stored in Size
+//Postcondition: The array Order index of the smallest value in 0 the index of the second smallest in 1 ...
+
 
 int main()
 {
@@ -21,8 +30,7 @@ int main()
 	const int MAXPLAYERS = 6;
 	string playerName[MAXPLAYERS];
 	double randomArray[MAXPLAYERS];
-	string sTemp;
-	double dTemp;
+	int playerTurnOrder[MAXPLAYERS];
 
 	cout << "Welcome to the B&O Banker Assistant \n";
 
@@ -41,49 +49,55 @@ int main()
 	{
 		cout << "Enter name of Player " << i+1 << ": ";
 		cin >> playerName[i];
+		playerTurnOrder[i] = i; //initialize playerTurnOrder array
 	}
 
 	// Set random turn order of players
-	
-	//Make random number array
-	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
-	srand(currentTime);
-	for (int i = 0; i < numberOfPlayers; i++)
-	{
-		randomArray[i] = rand() % 10000; // assign random number
-	}
+	randomArrayGenerator(randomArray, MAXPLAYERS, 10000);
 
 
 	//Sort names by their random number
 	
-	for (int i = 0; i < numberOfPlayers-1; i++)
-	{
-		for (int j = 0; j < numberOfPlayers - i - 1; j++)
-		{
-			if (randomArray[j] > randomArray[j + 1])
-			{
-				// Switch player names
-				sTemp = playerName[j];
-				playerName[j] = playerName[j + 1];
-				playerName[j + 1] = sTemp;
-				//Switch random numbers
-				dTemp = randomArray[j];
-				randomArray[j] = randomArray[j + 1];
-				randomArray[j + 1] = dTemp;
-			}
-		}
-
-	}
-
+	Sorter(randomArray, playerTurnOrder, numberOfPlayers);
 	// Write player names in new random order
-	for (int i = 1; i <= numberOfPlayers; i++)
+	for (int i = 0; i < numberOfPlayers; i++)
 	{
-		cout << i << ": " << playerName[i-1] << endl;
-
+		cout << i << ": " << playerName[playerTurnOrder[i]] << "(" << randomArray[playerTurnOrder[i]] << ")" << endl;
 	}
 	
 	cout << "Enter character to continue \n";
 	cin >> value;
 
+	return(0);
+}
+
+int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue)
+{
+	//Make random number array
+	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
+	srand(currentTime);
+	for (int i = 0; i < arraySize; i++)
+	{
+		arrayValues[i] = rand() % maxValue; // assign random number
+	}
+	return(arraySize);
+}
+
+
+int Sorter(double Values[], int Order[], int Size)
+{
+	int temp;
+	for (int i = 0; i < Size - 1; i++)
+	{
+		for (int j = 0; j < Size - i - 1; j++)
+		{
+			if (Values[Order[j]] > Values[Order[j + 1]])
+			{
+				temp = Order[j];
+				Order[j] = Order[j + 1];
+				Order[j + 1] = temp;
+			}
+		}
+	}
 	return(0);
 }
