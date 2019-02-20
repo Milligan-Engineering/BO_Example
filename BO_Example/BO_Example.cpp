@@ -47,7 +47,7 @@ int main()
 	
 	//Make random number array
 	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
-//	srand(currentTime);
+	srand(currentTime);
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
 		randomArray[i] = rand() % 10000; // assign random number
