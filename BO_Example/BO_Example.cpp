@@ -19,8 +19,7 @@ int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue);
 int Sorter(double Values[], int Order[], int Size);
 //Preconditions: An array with maginitudes stored in Values and the order is stored in Order (0 first, 1 second, ...)
 //				The size of the arrays are stored in Size
-//Postcondition: Order is modified so that the smallest value has order 0 the second smallest has order 1 ...
-
+//Postcondition: The array Order index of the smallest value in 0 the index of the second smallest in 1 ...
 
 
 int main()
@@ -60,24 +59,10 @@ int main()
 	//Sort names by their random number
 	
 	Sorter(randomArray, playerTurnOrder, numberOfPlayers);
-
-	for (int i = 0; i < numberOfPlayers; i++)
-	{
-		cout << playerTurnOrder[i] << ": " << playerName[i] << "(" << randomArray[i] << ")" << endl;
-	}
-
-
 	// Write player names in new random order
-
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
-		for (int j = 0; j < numberOfPlayers; j++)
-		{
-			if (playerTurnOrder[j] == i)
-			{
-				cout << i + 1 << ": " << playerName[j] << "(" << randomArray[j] << ")" << endl;
-			}
-		}
+		cout << i << ": " << playerName[playerTurnOrder[i]] << "(" << randomArray[playerTurnOrder[i]] << ")" << endl;
 	}
 	
 	cout << "Enter character to continue \n";
