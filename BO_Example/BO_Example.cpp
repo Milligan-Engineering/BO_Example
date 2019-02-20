@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <string>
+#include <time.h>
+
 using namespace std;
 
 
@@ -18,7 +20,9 @@ int main()
 	const int MINPLAYERS = 2;
 	const int MAXPLAYERS = 6;
 	string playerName[MAXPLAYERS];
-	string temp;
+	double randomArray[MAXPLAYERS];
+	string sTemp;
+	double dTemp;
 
 	cout << "Welcome to the B&O Banker Assistant \n";
 
@@ -39,23 +43,39 @@ int main()
 		cin >> playerName[i];
 	}
 
-	//Sort names alphabetically (poorly)
+	// Set random turn order of players
+	
+	//Make random number array
+	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
+//	srand(currentTime);
+	for (int i = 0; i < numberOfPlayers; i++)
+	{
+		randomArray[i] = rand() % 10000; // assign random number
+	}
+
+
+	//Sort names by their random number
 	
 	for (int i = 0; i < numberOfPlayers-1; i++)
 	{
 		for (int j = 0; j < numberOfPlayers - i - 1; j++)
 		{
-			if (playerName[j] > playerName[j + 1])
+			if (randomArray[j] > randomArray[j + 1])
 			{
-				temp = playerName[j];
+				// Switch player names
+				sTemp = playerName[j];
 				playerName[j] = playerName[j + 1];
-				playerName[j + 1] = temp;
+				playerName[j + 1] = sTemp;
+				//Switch random numbers
+				dTemp = randomArray[j];
+				randomArray[j] = randomArray[j + 1];
+				randomArray[j + 1] = dTemp;
 			}
 		}
 
 	}
 
-	// Write player names in order
+	// Write player names in new random order
 	for (int i = 1; i <= numberOfPlayers; i++)
 	{
 		cout << i << ": " << playerName[i-1] << endl;
