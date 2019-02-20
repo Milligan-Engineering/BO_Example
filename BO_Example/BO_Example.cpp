@@ -74,7 +74,7 @@ int main()
 	// Write player names in new random order
 	for (int i = 1; i <= numberOfPlayers; i++)
 	{
-		cout << i << ": " << playerName[i-1] << endl;
+		cout << i << ": " << playerName[i-1] << "  " << endl;
 
 	}
 	
