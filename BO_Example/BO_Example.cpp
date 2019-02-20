@@ -12,6 +12,9 @@
 
 using namespace std;
 
+int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue);
+//Precondition: arrayValues is an empty array of size arraySize. maxValue contains the upper limit of values
+//Postcondition: arrayValues will contain random values between 0 and maxValue. Returns size of array.
 
 int main()
 {
@@ -44,14 +47,7 @@ int main()
 	}
 
 	// Set random turn order of players
-	
-	//Make random number array
-	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
-//	srand(currentTime);
-	for (int i = 0; i < numberOfPlayers; i++)
-	{
-		randomArray[i] = rand() % 10000; // assign random number
-	}
+	randomArrayGenerator(randomArray, MAXPLAYERS, 10000);
 
 
 	//Sort names by their random number
@@ -87,3 +83,16 @@ int main()
 
 	return(0);
 }
+
+int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue)
+{
+	//Make random number array
+	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
+	srand(currentTime);
+	for (int i = 0; i < arraySize; i++)
+	{
+		arrayValues[i] = rand() % maxValue; // assign random number
+	}
+	return(arraySize);
+}
+
