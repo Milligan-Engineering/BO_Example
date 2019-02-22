@@ -19,8 +19,7 @@ int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue);
 int Sorter(double Values[], int Order[], int Size);
 //Preconditions: An array with maginitudes stored in Values and the order is stored in Order (0 first, 1 second, ...)
 //				The size of the arrays are stored in Size
-//Postcondition: The array Order index of the smallest value in 0 the index of the second smallest in 1 ...
-
+//Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
 
 int main()
 {
