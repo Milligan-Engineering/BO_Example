@@ -4,7 +4,7 @@
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game
 // Modified to contain multiple loop problems
-//Last Changed: 02/18/2019
+//Last Changed: 02/23/2019
 
 #include <iostream>
 #include <string>
@@ -17,7 +17,12 @@ int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue);
 //Postcondition: arrayValues will contain random values between 0 and maxValue. Returns size of array.
 
 int Sorter(double Values[], int Order[], int Size);
-//Preconditions: An array with maginitudes stored in Values and the order is stored in Order (0 first, 1 second, ...)
+//Preconditions: An array with maginitudes stored in Values (double) and the order is stored in Order (0 first, 1 second, ...)
+//				The size of the arrays are stored in Size
+//Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
+
+int Sorter(int Values[], int Order[], int Size);
+//Preconditions: An array with maginitudes stored in Values (integer) and the order is stored in Order (0 first, 1 second, ...)
 //				The size of the arrays are stored in Size
 //Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
 
@@ -28,8 +33,10 @@ int main()
 	const int MINPLAYERS = 2;
 	const int MAXPLAYERS = 6;
 	string playerName[MAXPLAYERS];
+	int playerCash[MAXPLAYERS];
 	double randomArray[MAXPLAYERS];
 	int playerTurnOrder[MAXPLAYERS];
+	
 
 	cout << "Welcome to the B&O Banker Assistant \n";
 
@@ -50,6 +57,7 @@ int main()
 		cin >> playerName[i];
 		playerTurnOrder[i] = i; //initialize playerTurnOrder array
 	}
+	cout << endl;
 
 	// Set random turn order of players
 	randomArrayGenerator(randomArray, MAXPLAYERS, 10000);
@@ -59,11 +67,32 @@ int main()
 	
 	Sorter(randomArray, playerTurnOrder, numberOfPlayers);
 	// Write player names in new random order
+	cout << "Initial Order \n";
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
 		cout << i << ": " << playerName[playerTurnOrder[i]] << "(" << randomArray[playerTurnOrder[i]] << ")" << endl;
 	}
-	
+	cout << endl;
+
+	// Assigning cash values
+	playerCash[0] = 500;
+	playerCash[1] = 100;
+	playerCash[2] = 300;
+	playerCash[3] = 400;
+	playerCash[4] = 600;
+	playerCash[5] = 200;
+
+	//Sort names by their cash
+
+	Sorter(playerCash, playerTurnOrder, numberOfPlayers);
+	// Write player names in new random order
+	cout << "New Order \n";
+	for (int i = 0; i < numberOfPlayers; i++)
+	{
+		cout << i << ": " << playerName[playerTurnOrder[i]] << "(" << playerCash[playerTurnOrder[i]] << ")" << endl;
+	}
+	cout << endl;
+
 	cout << "Enter character to continue \n";
 	cin >> value;
 
@@ -84,6 +113,24 @@ int randomArrayGenerator(double arrayValues[], int arraySize, int maxValue)
 
 
 int Sorter(double Values[], int Order[], int Size)
+{
+	int temp;
+	for (int i = 0; i < Size - 1; i++)
+	{
+		for (int j = 0; j < Size - i - 1; j++)
+		{
+			if (Values[Order[j]] > Values[Order[j + 1]])
+			{
+				temp = Order[j];
+				Order[j] = Order[j + 1];
+				Order[j + 1] = temp;
+			}
+		}
+	}
+	return(0);
+}
+
+int Sorter(int Values[], int Order[], int Size)
 {
 	int temp;
 	for (int i = 0; i < Size - 1; i++)
